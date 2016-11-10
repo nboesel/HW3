@@ -11,8 +11,6 @@
 # Deliverables
 # Make sure the new page is uploaded to your GitHub account.
 
-
-import re
 import urllib.request, urllib.parse, urllib.error
 from bs4 import BeautifulSoup
 
@@ -23,30 +21,22 @@ soup = BeautifulSoup(page, "html.parser")
 soup1 = str(soup)
 soup2 = soup1.replace("student", "AMAZING student")
 soup3 = soup2.replace("https://www.youtube.com/embed/mimp_3gquc4?feature=oembed", "me.jpg")
-soup4 = soup3.replace(/sites/default/themes/umsi/imgs/logo.png")
 
-final_spup = BeautifulSoup(soup4, "html.parser")
+final_soup = BeautifulSoup(soup3, "html.parser")
 
+for p in final_soup.find_all(class_= "logo"):
+	if p.img:
+		p.img['src'] = "media/logo.png"
+for p1 in final_soup.find_all(class_= "footer-logo"):
+	if p1.img:
+		p1.img['src'] = "media/logo.png"
 
 f = open("bshw3.html", "w")
 f.write (final_soup.prettify())
 f.close()
 
 
-# for line in soup.find_all("ul", {'class':"menu"}):
-# 	if "students" in (line.a.string):
-# 		line.a.string = line.a.string.replace("students", "AMAZING students")
 
-# for line in soup.find_all(class = "fi"):
-# 	try:
-# 		if "student" in line.string:
-# 			line.string = line.string.replace("student", "AMAZING student")
-# 	except:
-# 		pass
-	
-# for line in soup.find_all('h3'):
-# 	if "student" in line.string:
-# 		print (line)
 
 
 
